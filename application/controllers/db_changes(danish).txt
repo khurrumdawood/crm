@@ -1,0 +1,447 @@
+18-03-2015
+
+CREATE TABLE IF NOT EXISTS `notifications_header` (
+`id` int(11) NOT NULL,
+  `master_id` int(11) NOT NULL,
+  `title` varchar(100) NOT NULL,
+  `description` varchar(250) NOT NULL,
+  `is_active` int(1) NOT NULL DEFAULT '1',
+  `is_read` int(1) NOT NULL DEFAULT '0',
+  `is_send` int(1) NOT NULL DEFAULT '1',
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` datetime NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `notifications_header`
+--
+
+INSERT INTO `notifications_header` (`id`, `master_id`, `title`, `description`, `is_active`, `is_read`, `is_send`, `created_at`, `updated_at`) VALUES
+(1, 2, 'test', 'asdfasdf', 1, 0, 1, '2015-03-18 12:41:50', '0000-00-00 00:00:00');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `notifications_header`
+--
+ALTER TABLE `notifications_header`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `notifications_header`
+--
+ALTER TABLE `notifications_header`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+
+
+
+
+CREATE TABLE IF NOT EXISTS `notifications_detail` (
+`id` int(11) NOT NULL,
+  `notifications_header_id` int(11) NOT NULL,
+  `company_id` int(11) NOT NULL,
+  `sub_company_id` int(11) NOT NULL,
+  `is_active` int(1) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `notifications_detail`
+--
+
+INSERT INTO `notifications_detail` (`id`, `notifications_header_id`, `company_id`, `sub_company_id`, `is_active`, `created_at`) VALUES
+(1, 2, 0, 0, 1, '2015-03-18 12:41:50');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `notifications_detail`
+--
+ALTER TABLE `notifications_detail`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `notifications_detail`
+--
+ALTER TABLE `notifications_detail`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+
+
+
+
+
+
+
+19-3-15
+
+ALTER TABLE `employees` CHANGE `joined_at` `joined_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP 
+
+23-03-2015
+ALTER TABLE `customer` ADD `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ;
+
+ALTER TABLE `customer` CHANGE `id` `id` INT(11) NOT NULL AUTO_INCREMENT FIRST;
+ALTER TABLE `customer` CHANGE `create_employee_id` `create_employee_id` INT(11) NOT NULL AFTER `employee_id`;
+ALTER TABLE `customer` CHANGE `franchise_id` `franchise_id` INT(11) NOT NULL AFTER `create_employee_id`; 
+ALTER TABLE `customer` CHANGE `country_id` `country_id` INT(11) NOT NULL AFTER `franchise_id`;
+ALTER TABLE `customer` CHANGE `city_id` `city_id` INT(11) NOT NULL AFTER `country_id`;
+
+ALTER TABLE `customer` ADD `company_id` INT NOT NULL AFTER `create_employee_id`;
+
+
+
+
+
+
+
+
+
+
+(23-03-2015-Danish)
+ALTER TABLE `employees` ADD `description` VARCHAR( 250 ) NOT NULL 
+
+
+25-03-2015
+ALTER TABLE `zones` ADD `master_id` INT NOT NULL AFTER `id`, ADD `client_company_id` INT NOT NULL AFTER `master_id`;
+ALTER TABLE `zones` ADD `price` DOUBLE NOT NULL;
+ALTER TABLE `zones` ADD `price` DOUBLE NOT NULL ;
+ALTER TABLE `company` ADD `description` VARCHAR( 250 ) NOT NULL ;
+ALTER TABLE `company` ADD `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ;
+ALTER TABLE `category` ADD `description` VARCHAR( 250 ) NOT NULL ;
+ALTER TABLE `category` ADD `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ;
+ALTER TABLE `zones` ADD `description` VARCHAR(250) NOT NULL AFTER `zone`;
+ALTER TABLE `zones` DROP `master_id`;
+ALTER TABLE `zones` ADD `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ;
+
+
+
+
+
+26-03-2015
+ALTER TABLE `employees` ADD `margin` FLOAT NOT NULL AFTER `full_name`;
+ALTER TABLE `employees` CHANGE `is_active` `is_active` INT( 1 ) NOT NULL DEFAULT '1';
+
+#latest
+ALTER TABLE `zones` ADD `margin` FLOAT NOT NULL AFTER `description`;
+ALTER TABLE `company` ADD `client_company_id` INT NOT NULL AFTER `id`;
+ALTER TABLE `company` ADD `margin` FLOAT NOT NULL AFTER `description`;
+ALTER TABLE `company` ADD `parent_id` INT NOT NULL AFTER `id`;
+ALTER TABLE `zones` ADD `parent_id` INT NOT NULL AFTER `id`;
+ALTER TABLE `category` ADD `client_company_id` INT NOT NULL AFTER `id`;
+ALTER TABLE `category` ADD `parent_id` INT NOT NULL AFTER `id`;
+ALTER TABLE `category` ADD `margin` FLOAT NOT NULL AFTER `description`;
+
+
+27-03-2015
+ALTER TABLE `zones` ADD `parent_price` DOUBLE NOT NULL AFTER `price`;
+
+30-03-2015
+ALTER TABLE `employees` ADD `verification_code` VARCHAR(250) NOT NULL ;
+
+02-04-2015
+ALTER TABLE `employees` ADD `owner` VARCHAR( 50 ) NOT NULL ,
+ADD `phone` VARCHAR( 50 ) NOT NULL ,
+ADD `fax` VARCHAR( 50 ) NOT NULL ;
+
+
+
+ALTER TABLE `employees` ADD `address` VARCHAR( 250 ) NOT NULL AFTER `designation` ;
+
+
+ALTER TABLE `employees` ADD `city` VARCHAR( 50 ) NOT NULL AFTER `city_id` ;
+
+ALTER TABLE `employees` ADD `country` VARCHAR( 50 ) NOT NULL AFTER `city`;
+
+
+6-04-2015
+ALTER TABLE `customer`  ADD `contact_customer` VARCHAR(20) NOT NULL  AFTER `coments`,  ADD `is_potential` INT(1) NOT NULL  AFTER `contact_customer`,  ADD `area` VARCHAR(250) NOT NULL  AFTER `is_potential`,  ADD `customer_no` INT NOT NULL  AFTER `area`,  ADD `submit_date` DATETIME NOT NULL  AFTER `customer_no`,  ADD `activation_date` DATETIME NOT NULL  AFTER `submit_date`,  ADD `active_inactive` INT(1) NOT NULL  AFTER `activation_date`,  ADD `previous_carrier` INT NOT NULL  AFTER `active_inactive`,  ADD `customer_group` INT NOT NULL  AFTER `previous_carrier`,  ADD `industry` INT NOT NULL  AFTER `customer_group`,  ADD `registrotion` INT NOT NULL  AFTER `industry`,  ADD `vat` INT NOT NULL  AFTER `registrotion`,  ADD `dhl_account_no` INT NOT NULL  AFTER `vat`,  ADD `req_new_dhl` INT(1) NOT NULL DEFAULT '0'  AFTER `dhl_account_no`,  ADD `dhl_inbound_account_no` INT NOT NULL  AFTER `req_new_dhl`,  ADD `fedex_outbound` INT NOT NULL  AFTER `dhl_inbound_account_no`,  ADD `req_new_fedex_outbound` INT(1) NOT NULL DEFAULT '0'  AFTER `fedex_outbound`,  ADD `fedex_inbound` INT NOT NULL  AFTER `req_new_fedex_outbound`,  ADD `ups_account` INT NOT NULL  AFTER `fedex_inbound`,  ADD `associated_ups_zip` INT NOT NULL  AFTER `ups_account`,  ADD `other_ups_account` INT NOT NULL  AFTER `associated_ups_zip`,  ADD `uk_mail_account` INT NOT NULL  AFTER `other_ups_account`,  ADD `req_uk_mail_account` INT(1) NOT NULL DEFAULT '0'  AFTER `uk_mail_account`,  ADD `enable_uk_mail` INT(1) NOT NULL DEFAULT '0'  AFTER `req_uk_mail_account`,  ADD `rejection_note` VARCHAR(259) NOT NULL  AFTER `enable_uk_mail`;
+
+
+7-03-2015
+ALTER TABLE `customer`  ADD `a_customer_name` VARCHAR(100) NOT NULL ,  ADD `a_contact_name` VARCHAR(100) NOT NULL ,  ADD `a_contact_title` VARCHAR(50) NOT NULL ,  ADD `a_address` VARCHAR(300) NOT NULL ,  ADD `a_address_2` VARCHAR(300) NOT NULL ,  ADD `a_city` VARCHAR(50) NOT NULL ,  ADD `a_country` VARCHAR(50) NOT NULL ,  ADD `a_postal_code` VARCHAR(20) NOT NULL ,  ADD `a_category` VARCHAR(50) NOT NULL ,  ADD `a_phone` VARCHAR(50) NOT NULL ,  ADD `a_fax` VARCHAR(50) NOT NULL ,  ADD `a_email` VARCHAR(100) NOT NULL ,  ADD `a_mobile` VARCHAR(50) NOT NULL ,  ADD `a_alt_contact_phone` VARCHAR(50) NOT NULL ;
+ALTER TABLE `customer` CHANGE `b_country` `b_country` INT(11) NOT NULL AFTER `a_alt_contact_phone`;
+ALTER TABLE `customer` CHANGE `b_city` `b_city` VARCHAR(11) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL AFTER `b_country`; 
+ALTER TABLE `customer` CHANGE `b_postal_code` `b_postal_code` VARCHAR(20) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL AFTER `b_city`;
+ALTER TABLE `customer` CHANGE `b_shipping` `b_shipping` VARCHAR(20) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL AFTER `b_postal_code`
+
+ALTER TABLE `customer`  ADD `b_customer_name` VARCHAR(100) NOT NULL ,  ADD `b_contact_name` VARCHAR(100) NOT NULL ,  ADD `b_contact_title` VARCHAR(50) NOT NULL ,  ADD `b_address` VARCHAR(300) NOT NULL ,  ADD `b_address_2` VARCHAR(300) NOT NULL ,  ADD `b_category` VARCHAR(50) NOT NULL ,  ADD `b_phone` VARCHAR(50) NOT NULL ,  ADD `b_fax` VARCHAR(50) NOT NULL ,  ADD `b_email` VARCHAR(100) NOT NULL ,  ADD `b_mobile` VARCHAR(50) NOT NULL ,  ADD `b_alt_contact_phone` VARCHAR(50) NOT NULL ;
+
+ALTER TABLE `customer` CHANGE `b_city` `b_city` VARCHAR(11) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL AFTER `b_address_2`;
+ALTER TABLE `customer` CHANGE `b_country` `b_country` INT(11) NOT NULL AFTER `b_city`;
+ALTER TABLE `customer` CHANGE `b_postal_code` `b_postal_code` VARCHAR(20) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL AFTER `b_country`;
+
+ALTER TABLE `customer` ADD `b_same_a` INT(1) NOT NULL AFTER `a_alt_contact_phone`;
+
+ALTER TABLE `customer` ADD `o_owner` VARCHAR(100) NOT NULL , ADD `o_phone` VARCHAR(50) NOT NULL , ADD `o_ap_contact` VARCHAR(50) NOT NULL , ADD `o_phone_2` VARCHAR(50) NOT NULL , ADD `o_other_contact` VARCHAR(50) NOT NULL , ADD `o_other_phone` VARCHAR(50) NOT NULL , ADD `o_other_2_contact` VARCHAR(50) NOT NULL , ADD `o_other_2_phone` VARCHAR(50) NOT NULL ;
+
+ALTER TABLE `customer` ADD `i_invoice_sorting` INT NOT NULL , ADD `i_invoice_terms` INT NOT NULL , ADD `i_invoice_to_customer` INT NOT NULL , ADD `i_pick_up_fee` FLOAT NOT NULL , ADD `i_invoice_late_fee` FLOAT NOT NULL , ADD `i_email_invoice` INT(1) NOT NULL , ADD `i_customer_in_on_debit_card` INT(1) NOT NULL , ADD `i_show_pco` INT(1) NOT NULL ;
+
+ALTER TABLE `customer` ADD `c_foreign_credit_limit` DOUBLE NOT NULL ;
+
+
+ALTER TABLE `customer` CHANGE `a_category` `a_country_2` VARCHAR(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL, CHANGE `b_category` `b_country_2` VARCHAR(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL;
+
+
+CREATE TABLE IF NOT EXISTS `customer_base_rates` (
+`id` int(11) NOT NULL,
+  `customer_id` int(11) NOT NULL,
+  `company_id` int(11) NOT NULL,
+  `category_id` int(11) NOT NULL,
+  `zone_id` int(11) NOT NULL,
+  `percentage_margin` float NOT NULL,
+  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+ALTER TABLE `customer_base_rates`
+ ADD PRIMARY KEY (`id`);
+
+ALTER TABLE `customer_base_rates` CHANGE `category_id` `parent_id` INT(11) NOT NULL, CHANGE `zone_id` `category_id` INT(11) NOT NULL;
+
+ALTER TABLE `customer` ADD `base_rates_min_margin` FLOAT NOT NULL ;
+
+
+8-04-2015
+ALTER TABLE `customer` ADD `notes` TEXT NOT NULL ;
+ALTER TABLE `customer` CHANGE `i_invoice_sorting` `i_invoice_sorting` VARCHAR(100) NOT NULL, CHANGE `i_invoice_terms` `i_invoice_terms` VARCHAR(100) NOT NULL, CHANGE `i_invoice_to_customer` `i_invoice_to_customer` VARCHAR(100) NOT NULL, CHANGE `i_pick_up_fee` `i_pick_up_fee` VARCHAR(100) NOT NULL;
+
+ 
+
+
+
+CREATE TABLE IF NOT EXISTS `markups` (
+`id` int(11) NOT NULL,
+  `title` varchar(50) NOT NULL,
+  `description` varchar(300) NOT NULL,
+  `markup_type` varchar(30) NOT NULL,
+  `amount` double NOT NULL,
+  `carrier` int(11) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `updated_at` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+ALTER TABLE `markups`
+ ADD PRIMARY KEY (`id`);
+
+
+CREATE TABLE IF NOT EXISTS `customer_markups` (
+`id` int(11) NOT NULL,
+  `customer_id` int(11) NOT NULL,
+  `title` varchar(50) NOT NULL,
+  `description` varchar(300) NOT NULL,
+  `markup_type` varchar(30) NOT NULL,
+  `amount` double NOT NULL,
+  `carrier` int(11) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `updated_at` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+ALTER TABLE `customer_markups`
+ ADD PRIMARY KEY (`id`);
+
+
+9-04-2015
+ALTER TABLE `customer_markups` CHANGE `carrier` `carrier_id` INT(11) NOT NULL;
+ALTER TABLE `markups` CHANGE `carrier` `carrier_id` INT(11) NOT NULL;
+ALTER TABLE `customer_markups` ADD `markups_id` INT NOT NULL AFTER `id`;
+
+ALTER TABLE `customer_markups` CHANGE `created_at` `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP, CHANGE `updated_at` `updated_at` DATETIME NOT NULL;
+ALTER TABLE `customer_markups` CHANGE `updated_at` `updated_at` DATETIME NULL;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+12-4-15
+ALTER TABLE `customer` ADD `password` VARCHAR( 30 ) NOT NULL AFTER `email` 
+
+
+
+24-4-2015
+CREATE TABLE `crm`.`address_book` (
+`id` INT NOT NULL AUTO_INCREMENT ,
+`contact_id` INT NOT NULL ,
+`company` VARCHAR( 50 ) NOT NULL ,
+`address` VARCHAR( 250 ) NOT NULL ,
+`address2` VARCHAR( 250 ) NOT NULL ,
+`city` VARCHAR( 50 ) NOT NULL ,
+`state` VARCHAR( 50 ) NOT NULL ,
+`postal_code` VARCHAR( 50 ) NOT NULL ,
+`country` VARCHAR( 50 ) NOT NULL ,
+`phone` VARCHAR( 50 ) NOT NULL ,
+PRIMARY KEY ( `id` )
+) ENGINE = MYISAM ;
+
+
+ALTER TABLE `address_book` CHANGE `id` `id` INT( 11 ) NOT NULL AUTO_INCREMENT ,
+CHANGE `city` `city` INT NOT NULL ,
+CHANGE `state` `state` INT NOT NULL ,
+CHANGE `country` `country` INT NOT NULL 
+
+
+
+
+
+
+30-4-2015
+ALTER TABLE `shippments` ADD `sender_company` VARCHAR( 20 ) NOT NULL AFTER `customer_id` ,
+ADD `sender_phone` VARCHAR( 40 ) NOT NULL AFTER `sender_company` ,
+ADD `sender_name` VARCHAR( 20 ) NOT NULL AFTER `sender_phone` ,
+ADD `sender_email` VARCHAR( 30 ) NOT NULL AFTER `sender_name` ,
+ADD `sender_country` INT( 10 ) NOT NULL AFTER `sender_email` ,
+ADD `sender_state` INT( 10 ) NOT NULL AFTER `sender_country` ,
+ADD `sender_city` INT( 10 ) NOT NULL AFTER `sender_state` ,
+ADD `sender_postal` INT( 20 ) NOT NULL AFTER `sender_city` ,
+ADD `sender_address` VARCHAR( 50 ) NOT NULL AFTER `sender_postal` ,
+ADD `sender_address2` VARCHAR( 50 ) NOT NULL AFTER `sender_address` 
+
+
+
+ALTER TABLE `shippments` ADD `recipient_company` VARCHAR( 20 ) NOT NULL AFTER `customer_id` ,
+ADD `recipient_phone` VARCHAR( 40 ) NOT NULL AFTER `recipient_company` ,
+ADD `recipient_name` VARCHAR( 20 ) NOT NULL AFTER `recipient_phone` ,
+ADD `recipient_email` VARCHAR( 30 ) NOT NULL AFTER `recipient_name` ,
+ADD `recipient_country` INT( 10 ) NOT NULL AFTER `recipient_email` ,
+ADD `recipient_state` INT( 10 ) NOT NULL AFTER `recipient_country` ,
+ADD `recipient_city` INT( 10 ) NOT NULL AFTER `recipient_state` ,
+ADD `recipient_postal` INT( 20 ) NOT NULL AFTER `recipient_city` ,
+ADD `recipient_address` VARCHAR( 50 ) NOT NULL AFTER `recipient_postal` ,
+ADD `recipient_address2` VARCHAR( 50 ) NOT NULL AFTER `recipient_address` 
+
+
+ALTER TABLE `shippments` ADD `submit_date` DATETIME NOT NULL AFTER `sender_address2` ,
+ADD `services` INT NOT NULL AFTER `submit_date` ,
+ADD `package_type` INT NOT NULL AFTER `services` ,
+ADD `contents` VARCHAR( 10 ) NOT NULL AFTER `package_type` ,
+ADD `weight_unit` VARCHAR( 20 ) NOT NULL AFTER `contents` ,
+ADD `dimension_unit` VARCHAR( 20 ) NOT NULL AFTER `weight_unit` ,
+ADD `currency_unit` VARCHAR( 20 ) NOT NULL AFTER `dimension_unit` ,
+ADD `insurance` INT( 1 ) NOT NULL AFTER `currency_unit` 
+
+
+
+
+
+CREATE TABLE `crm`.`shipment_unit` (
+`id` INT NOT NULL AUTO_INCREMENT ,
+`shipment_id` INT NOT NULL ,
+`weight` VARCHAR( 20 ) NOT NULL ,
+`length` VARCHAR( 20 ) NOT NULL ,
+`width` VARCHAR( 20 ) NOT NULL ,
+`height` VARCHAR( 20 ) NOT NULL ,
+`custom` VARCHAR( 20 ) NOT NULL ,
+PRIMARY KEY ( `id` )
+) ENGINE = MYISAM ;
+
+
+
+
+
+
+
+ALTER TABLE `shippments` 
+ADD `content_description` VARCHAR(20) NOT NULL AFTER `insurance`,
+ ADD `shipment_reference` VARCHAR(20) NOT NULL AFTER `content_description`,
+ ADD `total_customes_values` VARCHAR(20) NOT NULL AFTER `shipment_reference`,
+ ADD `commercial_invoice` VARCHAR(50) NOT NULL AFTER `total_customes_values`,
+ ADD `receiver_tax` INT(30) NOT NULL AFTER `commercial_invoice`,
+ ADD `terms_of_trade` INT NOT NULL AFTER `receiver_tax`,
+ ADD `reasons_for_export` VARCHAR(30) NOT NULL AFTER `terms_of_trade`,
+ ADD `transport_charges` INT NOT NULL AFTER `reasons_for_export`,
+ ADD `account` INT NOT NULL AFTER `transport_charges`,
+ ADD `duties` INT NOT NULL AFTER `account`,
+ ADD `amount` DOUBLE NOT NULL AFTER `duties`,
+ ADD `collection_option` VARCHAR(30) NOT NULL AFTER `amount`,
+ ADD `dates` DATETIME NOT NULL AFTER `collection_option`,
+ ADD `ready_time` VARCHAR(20) NOT NULL AFTER `dates`,
+ ADD ` close_time` VARCHAR(20) NOT NULL AFTER `ready_time`,
+ ADD `location_code` INT NOT NULL AFTER ` close_time`
+ ADD `location_description` VARCHAR(50) NOT NULL AFTER `location_code`
+
+
+
+
+
+
+
+
+
+CREATE TABLE `crm`.`shipment_goods` (
+`id` INT NOT NULL AUTO_INCREMENT ,
+`shipment_id` INT NOT NULL ,
+`goods_for_description` VARCHAR( 20 ) NOT NULL ,
+`hts` INT NOT NULL ,
+`country_of_origin` INT NOT NULL ,
+`qty` INT NOT NULL ,
+`unit_value` INT NOT NULL ,
+PRIMARY KEY ( `id` )
+) ENGINE = MYISAM ;
+
+
+
+
+ALTER TABLE `shippments` ADD `address_book_id` INT NOT NULL AFTER `customer_id` 
+
+
+ALTER TABLE `shippments` ADD `grand_total` INT NOT NULL AFTER `location_description` 
+
+
+ALTER TABLE `shipment_goods` ADD `row_total` INT NOT NULL 
+
+
+ALTER TABLE `shippments` CHANGE ` close_time` `close_time` VARCHAR( 20 ) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL 
+
+
+
+
+
+04-05-2015
+
+ALTER TABLE `shippments` ADD `recipient_is_address` INT( 1 ) NOT NULL DEFAULT '0' AFTER `recipient_address2` ,
+ADD `recipient_is_address2` INT( 1 ) NOT NULL DEFAULT '0' AFTER `recipient_is_address` 
+
+
+ALTER TABLE `shippments` ADD `content_is_desc` INT( 1 ) NOT NULL DEFAULT '0' AFTER `content_description` 
+
+ALTER TABLE `shippments` ADD `shipment_is_ref` INT( 1 ) NOT NULL DEFAULT '0' AFTER `shipment_reference` 
+
+
+
+
+
+
+
+
+08-05-2015
+ALTER TABLE `shippments` CHANGE `contents` `contents` VARCHAR( 20 ) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL 
+
+
+
+
+
+
+
+
+ALTER TABLE `customer` ADD `a_state` VARCHAR(40) NOT NULL AFTER `a_city`;
+ALTER TABLE `customer` ADD `b_state` VARCHAR(40) NOT NULL AFTER `b_city` 
+ALTER TABLE `employees` ADD `state` VARCHAR(40) NOT NULL AFTER `city_id` 
+ALTER TABLE `customer` ADD `state` VARCHAR(40) NOT NULL AFTER `country` 

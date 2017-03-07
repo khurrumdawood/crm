@@ -1,0 +1,63 @@
+
+body {
+	overflow-x: hidden;
+}
+
+.nivoSlider {
+	/*width: 1600px;
+	margin-left: -329px;*/
+}
+
+
+.nivo-controlNav {
+	display: none;
+	position: absolute;
+	bottom: 20px;
+	z-index: 1000;
+	width: 100%;
+	padding: 0;
+	background-image: url(../scripts/bgtab.png);
+	background-repeat: no-repeat;
+	background-position: bottom center;
+}
+
+.nivo-controlNav a {
+	display: inline-block;
+	width: 16px;
+	height: 16px;
+	margin: 0 3px 3px 3px;
+	background-image: url(../scripts/tab.png);
+	background-repeat: no-repeat;
+	background-position: top center;
+	font-size: 0px;
+}
+
+.nivo-controlNav a.active {
+	background-image: url(../scripts/tabhover.png);
+}
+
+ @media (min-width: 768px) and (max-width: 979px) {
+
+.nivoSlider {
+	/*width: 1200px;
+	margin-left: -265px;*/
+}
+
+.nivo-controlNav {
+	bottom: 13px;
+}
+
+}
+
+ @media (max-width: 767px) {
+
+#banner{
+	display: none;
+}
+
+.nivoSlider {
+	width: 100%;
+	margin-left: -10%;
+}
+
+}

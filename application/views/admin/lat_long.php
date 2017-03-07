@@ -1,0 +1,1 @@
+<img src='https://maps.googleapis.com/maps/api/staticmap?center=<?php echo $lat ?>,<?php echo $long; ?>&zoom=13&size=300x300&sensor=false'/>

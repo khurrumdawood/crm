@@ -1,0 +1,12 @@
+[19-Sep-2014 05:32:30 UTC] PHP Parse error:  syntax error, unexpected $end, expecting '(' in /home/recycleb/public_html/recyclebeacon/application/helpers/elements_helper.php on line 467
+[19-Sep-2014 08:02:29 UTC] PHP Parse error:  syntax error, unexpected $end in /home/recycleb/public_html/recyclebeacon/application/controllers/web.php on line 1185
+[19-Sep-2014 16:10:06 UTC] PHP Parse error:  syntax error, unexpected T_VARIABLE, expecting T_FUNCTION in /home/recycleb/public_html/recyclebeacon/application/controllers/web.php on line 1537
+[19-Sep-2014 16:10:13 UTC] PHP Parse error:  syntax error, unexpected T_VARIABLE, expecting T_FUNCTION in /home/recycleb/public_html/recyclebeacon/application/controllers/web.php on line 1537
+[19-Sep-2014 16:10:13 UTC] PHP Parse error:  syntax error, unexpected T_VARIABLE, expecting T_FUNCTION in /home/recycleb/public_html/recyclebeacon/application/controllers/web.php on line 1537
+[19-Sep-2014 16:10:44 UTC] PHP Parse error:  syntax error, unexpected T_VARIABLE, expecting T_FUNCTION in /home/recycleb/public_html/recyclebeacon/application/controllers/web.php on line 1537
+[19-Sep-2014 16:10:56 UTC] PHP Parse error:  syntax error, unexpected T_VARIABLE, expecting T_FUNCTION in /home/recycleb/public_html/recyclebeacon/application/controllers/web.php on line 1537
+[21-Sep-2014 07:55:21 UTC] PHP Parse error:  syntax error, unexpected T_VARIABLE, expecting T_FUNCTION in /home/recycleb/public_html/recyclebeacon/application/controllers/web.php on line 1537
+[21-Sep-2014 07:56:36 UTC] PHP Parse error:  syntax error, unexpected T_VARIABLE, expecting T_FUNCTION in /home/recycleb/public_html/recyclebeacon/application/controllers/web.php on line 1537
+[21-Sep-2014 08:38:09 UTC] PHP Fatal error:  Call to undefined function get_user_comunity_name() in /home/recycleb/public_html/recyclebeacon/application/views/admin/user/list.php on line 45
+[24-Sep-2014 08:25:42 UTC] PHP Fatal error:  Call to undefined function user_spends_points() in /home/recycleb/public_html/recyclebeacon/application/controllers/web.php on line 1744
+[29-Sep-2014 11:51:57 UTC] PHP Parse error:  syntax error, unexpected T_ENCAPSED_AND_WHITESPACE in /home/recycleb/public_html/recyclebeacon/application/controllers/web.php on line 798

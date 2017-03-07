@@ -1,0 +1,10 @@
+DirectoryIndex index.php
+
+RewriteEngine on
+RewriteBase /shipment/crm/
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond $1 !^(index\.php|resources|shop|demo|robots\.txt|phpadmin_smt_pl\.php)
+
+RewriteRule ^(.*)$ index.php?/$1 [L]
